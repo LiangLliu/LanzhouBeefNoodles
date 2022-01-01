@@ -1,0 +1,27 @@
+@model LanzhouBeefNoodles.ViewModels.HomeVIewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>产品课表</h2>
+
+@foreach (var noodle in Model.Noodles)
+{
+    <div>
+        <h4>@noodle.Name</h4>
+        <span>$ @noodle.Price</span>
+        <p>@noodle.ShortDescription</p>
+    </div>
+}
+
+<h2>评论</h2>
+@foreach (var feedback in Model.Feedbacks)
+{
+    <div>
+        <h4>@feedback.Name</h4>
+        <span>$ @feedback.Email</span>
+        <span>$ @feedback.Message</span>
+        <p>@feedback.CreateDateUTC</p>
+    </div>
+}
