@@ -1,12 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LanzhouBeefNoodles.Controllers;
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-public class NoodleController : Controller
+namespace LanzhouBeefNoodles.Controllers
 {
-    // GET
-    public IList<String> Index()
+    public class NoodleController : Controller
     {
-        return new List<string> {"牛肉面，羊肉面，鸡蛋面"};
+        // GET: /<controller>/
+        public IList<String> Index()
+        {
+            return new List<string> { "牛肉面", "羊肉面","鸡蛋面" };
+        }
     }
 }

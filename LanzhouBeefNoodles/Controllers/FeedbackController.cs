@@ -1,37 +1,39 @@
-using LanzhouBeefNoodles.Models;
+﻿using LanzhouBeefNoodles.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
-namespace LanzhouBeefNoodles.Controllers;
-
-public class FeedbackController : Controller
+namespace LanzhouBeefNoodles.Controllers
 {
-    private readonly IFeedbackRepository _feedbackRepository;
-
-    // GET
-    public FeedbackController(IFeedbackRepository feedbackRepository)
+  
+    public class FeedbackController : Controller
     {
-        _feedbackRepository = feedbackRepository;
-    }
+        private IFeedbackRepository _feedbackRepository;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult Index(Feedback feedback)
-    {
-        if (ModelState.IsValid)
+        public FeedbackController(IFeedbackRepository feedbackRepository)
         {
-            _feedbackRepository.AddFeedback(feedback);
-            return RedirectToAction("FeedbackCompete");
+            _feedbackRepository = feedbackRepository;
         }
 
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    public IActionResult FeedbackCompete()
-    {
-        return View();
+        [HttpPost]
+        public IActionResult Index(Feedback feedback)
+        {
+            // Tag Helper
+            if (ModelState.IsValid)
+            {
+                _feedbackRepository.AddFeedback(feedback);
+                return RedirectToAction("FeedbackComplete");
+            }
+            return View();
+        }
+
+        public IActionResult FeedbackComplete()
+        {
+            return View();
+        }
     }
 }

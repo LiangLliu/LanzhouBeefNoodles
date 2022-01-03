@@ -1,4 +1,4 @@
-using LanzhouBeefNoodles.Models;
+﻿using LanzhouBeefNoodles.Models;
 using LanzhouBeefNoodles.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +25,16 @@ public class HomeController : Controller
             Noodles = _noodleRepository.GetAllNoodles().ToList(),
             Feedbacks = _feedbackRepository.GetAllFeedbacks().ToList()
         };
-        
         return View(homeVIewModel);
+    }
+
+    public String About()
+    {
+        return "Hello from About";
+    }
+
+    public IActionResult Detail(int id)
+    {
+        return View(_noodleRepository.GetNoodleById(id));
     }
 }

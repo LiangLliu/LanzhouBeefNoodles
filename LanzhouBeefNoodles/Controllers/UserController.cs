@@ -1,13 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LanzhouBeefNoodles.Controllers;
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-[Route("admin/[controller]/[action]")]
-public class UserController : Controller
+namespace LanzhouBeefNoodles.Controllers
 {
-    // GET
-    public IList<String> Index()
+    [Route("admin/[controller]/[action]")]
+    public class UserController : Controller
     {
-        return new List<string> {"测试", "测试1"};
+        // GET: /<controller>/
+        public IList<String> Index()
+        {
+            return new List<string> { "阿莱克斯", "莱克斯", "克斯","斯"};
+        }
     }
 }
