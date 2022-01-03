@@ -37,4 +37,9 @@ public class HomeController : Controller
     {
         return View(_noodleRepository.GetNoodleById(id));
     }
+
+    public IActionResult Privacy()
+    {
+        throw new NotImplementedException();
+    }
 }
